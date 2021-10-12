@@ -1,0 +1,77 @@
+.App {
+  height: 100vh;
+  overflow-y: scroll;
+  padding: 30px 30px;
+}
+
+.dnd-action_icon {
+  cursor: pointer;
+  font-size: 21px;
+}
+
+.ant-input.character-input {
+  border: 1px solid #9c9c9c;
+  border: 0;
+}
+
+.ant-space {
+  width: 100%;
+}
+
+.flex-row {
+  display: flex;
+}
+
+.flex-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.ant-form.ant-form-horizontal {
+  width: 100%;
+}
+
+.box--gutter15 {
+  margin: -10px 0;
+}
+.box--gutter15 .gutter_item {
+  margin: 10px 0;
+}
+
+.is_dragging {
+  opacity: 0.5;
+}
+
+.input-file {
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+}
+
+.character_color span div span div[title="#ffffff"] {
+  border: 1px solid #d8d8d8;
+}
+
+.dnd-paddint_top_10 {
+  padding-top: 10px;
+}
+
+/* полоса прокрутки (скроллбар) */
+::-webkit-scrollbar {
+  cursor: pointer;
+  width: 4px; /* ширина для вертикального скролла */
+  height: 4px; /* высота для горизонтального скролла */
+  background-color: none;
+}
+
+/* ползунок скроллбара */
+::-webkit-scrollbar-thumb {
+  cursor: pointer;
+  background-color: #586d9b;
+  border-radius: 9em;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  cursor: pointer;
+  /* background-color: #253861; */
+}
