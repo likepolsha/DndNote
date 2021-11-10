@@ -49,7 +49,6 @@
 }
 
 .diary_page-title {
-  padding-left: 2px;
   font-size: 18px;
   font-weight: 600;
 }
@@ -59,12 +58,25 @@
   font-size: 25px;
 }
 
-.diary_page-input_iction.red {
-  color: red;
+.diary_page-structure_icon {
+  cursor: pointer;
+  padding-right: 3px;
+  font-size: 22px;
 }
 
-.diary_page-input_iction.green {
-  color: green;
+.diary_page-structure_item {
+  cursor: pointer;
+  padding: 5px 10px;
+  border-radius: 2px;
+}
+
+.diary_page-structure_item.active {
+  background: #efefef;
+}
+
+.diary_page-structure_item:hover {
+  background: #efefef;
+  transition: 0.7;
 }
 
 .Pagination-root {

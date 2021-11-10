@@ -83,7 +83,13 @@ export default function Diary({ refetchTrigger }) {
 
   return (
     <div className="Diary-root">
-      <DiaryPage {...diary[currPage - 1]} onChange={onChangeDiary} />
+      <DiaryPage
+        {...diary[currPage - 1]}
+        diaryArr={diary}
+        currPage={currPage}
+        onChangePage={setCurrPage}
+        onChange={onChangeDiary}
+      />
 
       <Space size={27}>
         <Pagination
