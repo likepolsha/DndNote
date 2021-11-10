@@ -23,8 +23,8 @@ export default function CharacterInfo({ info, haveColors, onSaveInfo }) {
 
   return (
     <Form form={form} onFieldsChange={onChange} initialValues={info}>
-      <Row gutter={[6, 6]}>
-        <Col span={haveColors ? 5 : 6}>
+      <Row gutter={[8, 8]}>
+        <Col span={4}>
           <Form.Item name="name" noStyle>
             <TextArea
               className="character-input"
@@ -38,7 +38,7 @@ export default function CharacterInfo({ info, haveColors, onSaveInfo }) {
           </Form.Item>
         </Col>
 
-        <Col span={haveColors ? 12 : 18}>
+        <Col span={14}>
           <Form.Item name="info" noStyle>
             <TextArea
               className="character-input"
@@ -61,11 +61,15 @@ export default function CharacterInfo({ info, haveColors, onSaveInfo }) {
                   boxShadow: "none",
                 }}
                 colors={[
-                  "#DFF0FF", // синий
                   "#FFD0D0", // красный
-                  "#DFFFE3", // зеленый
+                  "#FFF3C6", // оранжевый
                   "#FBFFC6", // желтый
+                  "#DFFFE3", // зеленый
+                  "#DFFBFF", // голубой
+                  "#DFF0FF", // синий
                   "#CDB9FF", // сиреневый
+                  "#FDDFFF", // розовый
+                  "#EFEFEF", // серый
                   "#ffffff", // белый
                 ]}
                 className="character_color"

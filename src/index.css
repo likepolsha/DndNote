@@ -1,17 +1,85 @@
 .App {
+  width: 100vw;
   height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+
+  overflow: hidden;
+  padding: 30px;
+}
+
+.App-content {
+  height: 100%;
   overflow-y: scroll;
-  padding: 30px 30px;
+  overflow-x: hidden;
+
+  margin-top: 20px;
+}
+
+.NotesPage-root {
+  height: 100%;
+}
+
+.ant-col.note_page-right_content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.note_page-content_item--small {
+  height: 36%;
+  border: 1px solid red;
+}
+.note_page-content_item--large {
+  /* height: 60%; */
+  height: 70%;
+}
+
+.Diary-root {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.DiaryPage-root {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.diary_page-title {
+  padding-left: 2px;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.diary_page-input_iction {
+  cursor: pointer;
+  font-size: 25px;
+}
+
+.diary_page-input_iction.red {
+  color: red;
+}
+
+.diary_page-input_iction.green {
+  color: green;
+}
+
+.Pagination-root {
+  display: flex;
+  align-items: center;
+  margin: 0 -8px;
+}
+
+.pagination-item {
+  margin: 0 8px;
 }
 
 .dnd-action_icon {
   cursor: pointer;
-  font-size: 21px;
-}
-
-.ant-input.character-input {
-  border: 1px solid #9c9c9c;
-  border: 0;
+  font-size: 24px;
 }
 
 .ant-space {
@@ -32,10 +100,10 @@
 }
 
 .box--gutter15 {
-  margin: -10px 0;
+  margin: -15px 0;
 }
 .box--gutter15 .gutter_item {
-  margin: 10px 0;
+  margin: 15px 0;
 }
 
 .is_dragging {

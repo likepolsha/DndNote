@@ -2,15 +2,17 @@ import React from "react";
 import { format } from "date-fns";
 import { SaveTwoTone } from "@ant-design/icons";
 
-export const TxtDocSaver = ({ characters, important, settings }) => {
-  const jsonChars = JSON.stringify(characters);
-  const jsonImp = JSON.stringify(important);
-  const jsonSettings = JSON.stringify(settings);
+import { store } from "../../store";
 
+export const TxtDocSaver = () => {
   const downloadTxtFile = () => {
+    const jsonChars = JSON.stringify(store.chars);
+    const jsonImp = JSON.stringify(store.imp);
+    const jsonDiary = JSON.stringify(store.diary);
+
     const date = format(new Date(), "dd.MM.yyyy HH.mm");
     const element = document.createElement("a");
-    const file = new Blob([`${jsonChars} \n ${jsonImp} \n ${jsonSettings}`], {
+    const file = new Blob([`${jsonChars} \n ${jsonImp} \n ${jsonDiary}`], {
       type: "text/plain",
     });
     element.href = URL.createObjectURL(file);
