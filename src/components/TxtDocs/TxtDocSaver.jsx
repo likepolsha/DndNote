@@ -6,9 +6,16 @@ import { store } from "../../store";
 
 export const TxtDocSaver = () => {
   const downloadTxtFile = () => {
-    const jsonChars = JSON.stringify(store.chars);
-    const jsonImp = JSON.stringify(store.imp);
-    const jsonDiary = JSON.stringify(store.diary);
+    const jsonChars = JSON.stringify(store.chars || []);
+    const jsonImp = JSON.stringify(store.imp || "");
+    const jsonDiary = JSON.stringify(
+      store.diary || [
+        {
+          title: "Заголовок 1",
+          text: "",
+        },
+      ]
+    );
 
     const date = format(new Date(), "dd.MM.yyyy HH.mm");
     const element = document.createElement("a");
@@ -17,7 +24,7 @@ export const TxtDocSaver = () => {
     });
     element.href = URL.createObjectURL(file);
     element.download = `dnd ${date}.txt`;
-    document.body.appendChild(element); // Required for this to work in FireFox
+    document.body.appendChild(element);
     element.click();
   };
 

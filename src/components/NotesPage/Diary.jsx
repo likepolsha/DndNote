@@ -24,7 +24,11 @@ export default function Diary({ refetchTrigger }) {
     ];
     store.diary = $diary;
 
-    const $currPage = getItemFromLocal("currPage") || $diary.length;
+    let $currPage = getItemFromLocal("currPage") || $diary.length;
+
+    if ($currPage > $diary.length) {
+      $currPage = $diary.length;
+    }
 
     setDiary($diary);
     setTotal($diary.length);
