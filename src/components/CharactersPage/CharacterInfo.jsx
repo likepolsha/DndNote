@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Col, Input, Row, Form } from "antd";
 import { CirclePicker } from "react-color";
 import { colors } from "../../common/colors";
@@ -7,6 +7,7 @@ const { TextArea } = Input;
 
 export default function CharacterInfo({ info, haveColors, onSaveInfo }) {
   const [form] = Form.useForm();
+  const [localInfo, setLocalInfo] = useState(info);
 
   const styles = {
     background: info.color,
@@ -16,14 +17,17 @@ export default function CharacterInfo({ info, haveColors, onSaveInfo }) {
         : `1px solid ${info.color}`,
   };
 
-  const onChange = () => {
-    const vals = form.getFieldsValue();
-
-    onSaveInfo(vals);
+  const onChange = (val, allVals) => {
+    setLocalInfo(allVals);
   };
 
   return (
-    <Form form={form} onFieldsChange={onChange} initialValues={info}>
+    <Form
+      form={form}
+      onFieldsChange={onChange}
+      onFinish={onSaveInfo}
+      initialValues={info}
+    >
       <Row gutter={[8, 8]}>
         <Col span={4}>
           <Form.Item name="name" noStyle>
@@ -35,6 +39,7 @@ export default function CharacterInfo({ info, haveColors, onSaveInfo }) {
                 minRows: 1,
                 maxRows: 9,
               }}
+              onBlur={() => form.submit()}
             />
           </Form.Item>
         </Col>
@@ -49,6 +54,7 @@ export default function CharacterInfo({ info, haveColors, onSaveInfo }) {
                 minRows: 1,
                 maxRows: 9,
               }}
+              onBlur={() => form.submit()}
             />
           </Form.Item>
         </Col>
@@ -63,6 +69,7 @@ export default function CharacterInfo({ info, haveColors, onSaveInfo }) {
                 }}
                 colors={colors}
                 className="character_color"
+                onChange={() => form.submit()}
               />
             </Form.Item>
           </Col>

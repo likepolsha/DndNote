@@ -8,7 +8,7 @@ import { saveToLocal, getItemFromLocal } from "../../functions";
 
 import "antd/dist/antd.css";
 import { store } from "../../common/store";
-import { DragOutlined } from "@ant-design/icons";
+import { DeleteOutlined, DragOutlined } from "@ant-design/icons";
 
 export default function CharactersPage({ refetchTrigger }) {
   const [characters, setCharacters] = useState([]);
@@ -95,14 +95,13 @@ export default function CharactersPage({ refetchTrigger }) {
                           >
                             <Button
                               size="small"
+                              icon={<DeleteOutlined />}
                               onDoubleClick={() => deleteCharacter(char.id)}
                               style={{
                                 marginRight: 15,
                                 height: 32,
                               }}
-                            >
-                              -
-                            </Button>
+                            />
 
                             <div
                               {...$provided.dragHandleProps}
