@@ -1,12 +1,14 @@
-import React from "react";
-import { Col, Input, Row, Form } from "antd";
+import React, { useState } from "react";
+import { Col, Input, Row, Form, Button, Popover } from "antd";
 import { CirclePicker } from "react-color";
 import { colors } from "../../common/colors";
+import { BgColorsOutlined } from "@ant-design/icons";
 
 const { TextArea } = Input;
 
 export default function CharacterInfo({ info, haveColors, onSaveInfo }) {
   const [form] = Form.useForm();
+  const [visibleColor, setVisiblColor] = useState(false);
 
   const styles = {
     background: info.color,
@@ -34,7 +36,7 @@ export default function CharacterInfo({ info, haveColors, onSaveInfo }) {
           </Form.Item>
         </Col>
 
-        <Col span={14}>
+        <Col span={16}>
           <Form.Item name="info" noStyle>
             <TextArea
               className="character-input"
@@ -51,17 +53,33 @@ export default function CharacterInfo({ info, haveColors, onSaveInfo }) {
 
         {haveColors && (
           <Col>
-            <Form.Item name="color" normalize={(val) => val.hex} noStyle>
-              <CirclePicker
-                triangle="hide"
-                styles={{
-                  boxShadow: "none",
+            <Popover
+              content={
+                <Form.Item name="color" normalize={(val) => val.hex} noStyle>
+                  <CirclePicker
+                    triangle="hide"
+                    styles={{
+                      boxShadow: "none",
+                    }}
+                    colors={colors}
+                    className="character_color"
+                    onChange={() => form.submit()}
+                  />
+                </Form.Item>
+              }
+              trigger="click"
+              visible={visibleColor}
+              onVisibleChange={setVisiblColor}
+            >
+              <Button
+                size="small"
+                icon={<BgColorsOutlined />}
+                style={{
+                  marginLeft: 7,
+                  height: 32,
                 }}
-                colors={colors}
-                className="character_color"
-                onChange={() => form.submit()}
               />
-            </Form.Item>
+            </Popover>
           </Col>
         )}
       </Row>
