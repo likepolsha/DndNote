@@ -2,7 +2,7 @@ import React from "react";
 import { format } from "date-fns";
 import { SaveTwoTone } from "@ant-design/icons";
 
-import { store } from "../../store";
+import { store } from "../../common/store";
 
 export const TxtDocSaver = () => {
   const downloadTxtFile = () => {

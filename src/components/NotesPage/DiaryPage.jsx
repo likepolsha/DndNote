@@ -40,7 +40,10 @@ export default function DiaryPage({
             }}
             onBlur={() => {
               setInputingTitle(false);
-              setLocalTitle(title);
+              onChange({
+                title: localTitle,
+                text: text,
+              });
             }}
             onKeyPress={(e) => {
               if (e.which === 13) {

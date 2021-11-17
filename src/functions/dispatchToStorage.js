@@ -1,5 +1,5 @@
 import { getItemFromLocal } from ".";
-import { store } from "../store";
+import { store } from "../common/store";
 
 export const dispatchToStorage = () => {
   const imp = getItemFromLocal("imp");

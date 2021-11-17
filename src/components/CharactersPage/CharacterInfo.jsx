@@ -1,6 +1,7 @@
 import React from "react";
 import { Col, Input, Row, Form } from "antd";
 import { CirclePicker } from "react-color";
+import { colors } from "../../common/colors";
 
 const { TextArea } = Input;
 
@@ -60,18 +61,7 @@ export default function CharacterInfo({ info, haveColors, onSaveInfo }) {
                 styles={{
                   boxShadow: "none",
                 }}
-                colors={[
-                  "#FFD0D0", // красный
-                  "#FFF3C6", // оранжевый
-                  "#FBFFC6", // желтый
-                  "#DFFFE3", // зеленый
-                  "#DFFBFF", // голубой
-                  "#DFF0FF", // синий
-                  "#CDB9FF", // сиреневый
-                  "#FDDFFF", // розовый
-                  "#EFEFEF", // серый
-                  "#ffffff", // белый
-                ]}
+                colors={colors}
                 className="character_color"
               />
             </Form.Item>

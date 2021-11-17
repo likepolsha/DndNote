@@ -7,7 +7,8 @@ import CharacterInfo from "./CharacterInfo";
 import { saveToLocal, getItemFromLocal } from "../../functions";
 
 import "antd/dist/antd.css";
-import { store } from "../../store";
+import { store } from "../../common/store";
+import { DragOutlined } from "@ant-design/icons";
 
 export default function CharactersPage({ refetchTrigger }) {
   const [characters, setCharacters] = useState([]);
@@ -84,7 +85,6 @@ export default function CharactersPage({ refetchTrigger }) {
                       {($provided, snapshot) => (
                         <div
                           {...$provided.draggableProps}
-                          {...$provided.dragHandleProps}
                           ref={$provided.innerRef}
                         >
                           <div
@@ -103,6 +103,19 @@ export default function CharactersPage({ refetchTrigger }) {
                             >
                               -
                             </Button>
+
+                            <div
+                              {...$provided.dragHandleProps}
+                              style={{ marginRight: 7 }}
+                            >
+                              <Button
+                                size="small"
+                                icon={<DragOutlined />}
+                                style={{
+                                  height: 32,
+                                }}
+                              />
+                            </div>
 
                             <CharacterInfo
                               info={char}

@@ -1,7 +1,7 @@
 import { Button, Space } from "antd";
 import React, { useEffect, useState } from "react";
 import { getItemFromLocal, saveToLocal } from "../../functions";
-import { store } from "../../store";
+import { store } from "../../common/store";
 import Pagination from "../Pagination/Pagination";
 import DiaryPage from "./DiaryPage";
 

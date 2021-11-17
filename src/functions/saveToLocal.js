@@ -1,4 +1,4 @@
-import { store } from "../store";
+import { store } from "../common/store";
 
 export const saveToLocal = (key, el) => {
   const jsonEl = JSON.stringify(el);

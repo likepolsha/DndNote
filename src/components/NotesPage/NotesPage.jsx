@@ -3,7 +3,7 @@ import { Col, Row, Input } from "antd";
 
 import "../../index.css";
 import { getItemFromLocal, saveToLocal } from "../../functions";
-import { store } from "../../store";
+import { store } from "../../common/store";
 import Diary from "./Diary";
 
 const { TextArea } = Input;
