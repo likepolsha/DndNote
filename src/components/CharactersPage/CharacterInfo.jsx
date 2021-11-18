@@ -19,7 +19,16 @@ export default function CharacterInfo({ info, haveColors, onSaveInfo }) {
   };
 
   return (
-    <Form form={form} onFinish={onSaveInfo} initialValues={info}>
+    <Form
+      form={form}
+      onFinish={(vals) => {
+        if (!vals.color) {
+          return onSaveInfo({ ...vals, color: info.color });
+        }
+        return onSaveInfo(vals);
+      }}
+      initialValues={info}
+    >
       <Row gutter={[8, 8]}>
         <Col span={4}>
           <Form.Item name="name" noStyle>

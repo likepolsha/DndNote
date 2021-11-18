@@ -3,7 +3,7 @@ export const colors = [
   "#FFF3C6", // оранжевый
   "#FBFFC6", // желтый
   "#DFFFE3", // зеленый
-  "#F5FEFF", // голубой
+  "#DFFCFF", // голубой
   "#D2DAFF", // синий
   "#D9BDFF", // сиреневый
   "#FDDFFF", // розовый

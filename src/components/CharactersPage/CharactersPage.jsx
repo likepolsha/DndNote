@@ -27,7 +27,7 @@ export default function CharactersPage({ refetchTrigger }) {
         id: Date.now(),
         name: "",
         info: "",
-        color: "#fff",
+        color: "#ffffff",
       },
     ]);
   };
