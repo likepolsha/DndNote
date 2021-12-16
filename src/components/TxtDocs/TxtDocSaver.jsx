@@ -7,6 +7,7 @@ import { store } from "../../common/store";
 export const TxtDocSaver = () => {
   const downloadTxtFile = () => {
     const jsonChars = JSON.stringify(store.chars || []);
+    const jsonTags = JSON.stringify(store.tags || []);
     const jsonImp = JSON.stringify(store.imp || "");
     const jsonDiary = JSON.stringify(
       store.diary || [
@@ -19,9 +20,12 @@ export const TxtDocSaver = () => {
 
     const date = format(new Date(), "dd.MM.yyyy HH.mm");
     const element = document.createElement("a");
-    const file = new Blob([`${jsonChars} \n ${jsonImp} \n ${jsonDiary}`], {
-      type: "text/plain",
-    });
+    const file = new Blob(
+      [`${jsonChars} \n ${jsonImp} \n ${jsonDiary} \n ${jsonTags}`],
+      {
+        type: "text/plain",
+      }
+    );
     element.href = URL.createObjectURL(file);
     element.download = `dnd ${date}.txt`;
     document.body.appendChild(element);

@@ -1,12 +1,18 @@
 import React, { useState } from "react";
-import { Col, Input, Row, Form, Button, Popover } from "antd";
+import { Col, Input, Row, Form, Button, Popover, Select, Tag } from "antd";
 import { CirclePicker } from "react-color";
 import { colors } from "../../common/colors";
 import { BgColorsOutlined } from "@ant-design/icons";
+import TagRender from "../TagRender/TagRender";
 
 const { TextArea } = Input;
 
-export default function CharacterInfo({ info, haveColors, onSaveInfo }) {
+export default function CharacterInfo({
+  info,
+  haveColors,
+  tagsList,
+  onSaveInfo,
+}) {
   const [form] = Form.useForm();
   const [visibleColor, setVisiblColor] = useState(false);
 
@@ -91,6 +97,30 @@ export default function CharacterInfo({ info, haveColors, onSaveInfo }) {
             </Popover>
           </Col>
         )}
+
+        <Col span={3}>
+          <Form.Item name="tags">
+            <Select
+              mode="multiple"
+              placeholder="Теги"
+              showArrow
+              tagRender={(props) => (
+                <TagRender tagsList={tagsList} {...props} />
+              )}
+              onChange={() => form.submit()}
+              // value={localTags}
+              // style={{ width: 300 }}
+              // onSelect={onSelectTag}
+              // onDeselect={onDeselectTag}
+            >
+              {tagsList.map((tag) => (
+                <Select.Option key={tag.label} value={tag.label}>
+                  <Tag color={tag.color}>{tag.label}</Tag>
+                </Select.Option>
+              ))}
+            </Select>
+          </Form.Item>
+        </Col>
       </Row>
     </Form>
   );

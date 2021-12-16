@@ -136,6 +136,18 @@
   padding-top: 10px;
 }
 
+.ant-tag.ant-tag-has-color {
+  color: black;
+}
+
+.anticon.anticon-close.ant-tag-close-icon {
+  color: black;
+}
+
+.tags_editor-col:first-child {
+  border-right: 1px solid #f0f0f0;
+}
+
 /* полоса прокрутки (скроллбар) */
 ::-webkit-scrollbar {
   cursor: pointer;

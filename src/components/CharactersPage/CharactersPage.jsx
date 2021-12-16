@@ -10,7 +10,11 @@ import "antd/dist/antd.css";
 import { store } from "../../common/store";
 import { DeleteOutlined, DragOutlined } from "@ant-design/icons";
 
-export default function CharactersPage({ refetchTrigger }) {
+export default function CharactersPage({
+  refetchTrigger,
+  tagsList,
+  searchedTags,
+}) {
   const [characters, setCharacters] = useState([]);
 
   const getFromLocal = () => {
@@ -68,6 +72,54 @@ export default function CharactersPage({ refetchTrigger }) {
     getFromLocal();
   }, [refetchTrigger]);
 
+  const renderChars = (chars) =>
+    chars.map((char, index) => (
+      <Draggable key={char.id} draggableId={char.id.toString()} index={index}>
+        {($provided, snapshot) => (
+          <div {...$provided.draggableProps} ref={$provided.innerRef}>
+            <div
+              key={char.id}
+              className={c("flex-row gutter_item", {
+                is_dragging: snapshot.isDragging,
+              })}
+            >
+              <Button
+                size="small"
+                icon={<DeleteOutlined />}
+                onDoubleClick={() => deleteCharacter(char.id)}
+                style={{
+                  marginRight: 15,
+                  height: 32,
+                }}
+              />
+
+              <div {...$provided.dragHandleProps} style={{ marginRight: 7 }}>
+                <Button
+                  size="small"
+                  icon={<DragOutlined />}
+                  style={{
+                    height: 32,
+                  }}
+                />
+              </div>
+
+              <CharacterInfo
+                info={char}
+                haveColors
+                tagsList={tagsList}
+                onSaveInfo={(vals) =>
+                  onCharacterChange({
+                    id: char.id,
+                    el: vals,
+                  })
+                }
+              />
+            </div>
+          </div>
+        )}
+      </Draggable>
+    ));
+
   return (
     <div className="CharactersPage-root">
       <div className="flex-col box--gutter15">
@@ -76,61 +128,23 @@ export default function CharactersPage({ refetchTrigger }) {
             {(provided) => (
               <div ref={provided.innerRef} {...provided.droppableProps}>
                 <div className="dnd-paddint_top_10">
-                  {characters.map((char, index) => (
-                    <Draggable
-                      key={char.id}
-                      draggableId={char.id.toString()}
-                      index={index}
-                    >
-                      {($provided, snapshot) => (
-                        <div
-                          {...$provided.draggableProps}
-                          ref={$provided.innerRef}
-                        >
-                          <div
-                            key={char.id}
-                            className={c("flex-row gutter_item", {
-                              is_dragging: snapshot.isDragging,
-                            })}
-                          >
-                            <Button
-                              size="small"
-                              icon={<DeleteOutlined />}
-                              onDoubleClick={() => deleteCharacter(char.id)}
-                              style={{
-                                marginRight: 15,
-                                height: 32,
-                              }}
-                            />
+                  {searchedTags.length > 0
+                    ? renderChars(
+                        characters.filter((item) => {
+                          const { tags } = item;
+                          let flag = true;
 
-                            <div
-                              {...$provided.dragHandleProps}
-                              style={{ marginRight: 7 }}
-                            >
-                              <Button
-                                size="small"
-                                icon={<DragOutlined />}
-                                style={{
-                                  height: 32,
-                                }}
-                              />
-                            </div>
+                          searchedTags.forEach((label) => {
+                            if (!tags.includes(label)) {
+                              flag = false;
+                              return;
+                            }
+                          });
 
-                            <CharacterInfo
-                              info={char}
-                              haveColors
-                              onSaveInfo={(vals) =>
-                                onCharacterChange({
-                                  id: char.id,
-                                  el: vals,
-                                })
-                              }
-                            />
-                          </div>
-                        </div>
-                      )}
-                    </Draggable>
-                  ))}
+                          return flag;
+                        })
+                      )
+                    : renderChars(characters)}
                 </div>
                 {provided.placeholder}
               </div>
