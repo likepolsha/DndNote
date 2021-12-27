@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Col, Input, Row, Form, Button, Popover, Select, Tag } from "antd";
+import c from "classnames";
 import { CirclePicker } from "react-color";
 import { colors } from "../../common/colors";
 import { BgColorsOutlined } from "@ant-design/icons";
@@ -108,10 +109,6 @@ export default function CharacterInfo({
                 <TagRender tagsList={tagsList} {...props} />
               )}
               onChange={() => form.submit()}
-              // value={localTags}
-              // style={{ width: 300 }}
-              // onSelect={onSelectTag}
-              // onDeselect={onDeselectTag}
             >
               {tagsList.map((tag) => (
                 <Select.Option key={tag.label} value={tag.label}>
